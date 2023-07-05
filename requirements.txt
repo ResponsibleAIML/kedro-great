@@ -1,6 +1,5 @@
-kedro==0.16.3
-kedro[pandas]==0.16.3
-kedro[spark]==0.16.3
-great_expectations<0.13
+kedro>=0.16.0
+kedro[pandas]>=0.16.0
+kedro[spark]>=0.16.0
+great_expectations>=0.13.0
 pyspark
-jinja2==3.0.3

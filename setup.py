@@ -17,13 +17,12 @@ setup(
     include_package_data=True,
     license="MIT",
     install_requires=[
-        "kedro==0.16.3",
-        "kedro[pandas]==0.16.3",
-        "kedro[spark]==0.16.3",
-        "great_expectations<0.13",
+        "kedro>=0.16.0",
+        "kedro[pandas]>=0.16.0",
+        "kedro[spark]>=0.16.0",
+        "great_expectations>=0.13",
         "pyspark",
         "pandas",
-        "jinja2==3.0.3",
     ],
     classifiers=[
         "License :: OSI Approved :: MIT License",
