@@ -45,7 +45,8 @@ def init(target_directory, usage_stats):
             # TODO ensure this is covered by a test
             exit(0)
         try:
-            DataContext.create(target_directory, usage_statistics_enabled=usage_stats)
+            toolkit.load_data_context_with_error_handling(target_directory)
+            #DataContext.create(target_directory, usage_statistics_enabled=usage_stats)
             cli_message(PROJECT_IS_COMPLETE)
         except DataContextError as e:
             cli_message("<red>{}</red>".format(e.message))
