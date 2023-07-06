@@ -1,0 +1,4 @@
+[tool.kedro]
+package_name = "ep"
+project_name = "ep"
+project_version = "0.17.7"

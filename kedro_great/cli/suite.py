@@ -5,7 +5,7 @@ from pathlib import Path
 import click
 from great_expectations import DataContext
 from great_expectations.cli import toolkit
-from great_expectations.cli.toolkit import create_empty_suite
+from great_expectations.cli.toolkit import get_or_create_expectation_suite
 from kedro.framework.context import KedroContext, load_context
 
 from ..data import generate_datasource_name
@@ -86,7 +86,7 @@ def generate_basic_suites(
         )
 
         if empty:
-            create_empty_suite(ge_context, suite_name, suite_batch_kwargs)
+            get_or_create_expectation_suite(ge_context, suite_name, None, None, False, suite_batch_kwargs, True)
         else:
             ge_context.profile_data_asset(
                 datasource_name,

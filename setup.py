@@ -17,9 +17,9 @@ setup(
     include_package_data=True,
     license="MIT",
     install_requires=[
-        "kedro>=0.16.0",
-        "kedro[pandas]>=0.16.0",
-        "kedro[spark]>=0.16.0",
+        "kedro==0.17.*",
+        "kedro[pandas]==0.17.*",
+        "kedro[spark]==0.17.*",
         "great_expectations>=0.13",
         "pyspark",
         "pandas",

@@ -7,7 +7,7 @@ from great_expectations.cli import toolkit
 from great_expectations.cli.cli_messages import (
     LETS_BEGIN_PROMPT,
     RUN_INIT_AGAIN,
-    SETUP_SUCCESS,
+    PROJECT_IS_COMPLETE,
 )
 from great_expectations.cli.init import _get_full_path_to_ge_dir
 from great_expectations.cli.util import cli_message
@@ -39,14 +39,14 @@ def init(target_directory, usage_stats):
     target_directory = os.path.abspath(target_directory)
     ge_dir = _get_full_path_to_ge_dir(target_directory)
 
-    if not DataContext.does_config_exist_on_disk(ge_dir):
+    if not os.path.exists(ge_dir):
         if not click.confirm(LETS_BEGIN_PROMPT, default=True):
             cli_message(RUN_INIT_AGAIN)
             # TODO ensure this is covered by a test
             exit(0)
         try:
             DataContext.create(target_directory, usage_statistics_enabled=usage_stats)
-            cli_message(SETUP_SUCCESS)
+            cli_message(PROJECT_IS_COMPLETE)
         except DataContextError as e:
             cli_message("<red>{}</red>".format(e.message))
             exit(5)
