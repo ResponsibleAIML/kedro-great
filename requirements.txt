@@ -1,5 +1,6 @@
-kedro==0.17.*
-kedro[pandas]==0.17.*
-kedro[spark]>==0.17.*
-great_expectations>=0.13.0
+kedro>=0.18.0
+kedro[spark]
+great_expectations>=0.13
 pyspark
+pandas
+tables==3.8.0

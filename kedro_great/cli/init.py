@@ -34,7 +34,9 @@ def init(target_directory, usage_stats):
     Create a new Great Expectations project configuration and
     fill in the Datasources and Suites based on the kedro catalog
     """
-    from kedro.framework.context import load_context
+    from kedro.framework.session import KedroSession
+    from kedro.framework.startup import bootstrap_project
+    
 
     target_directory = os.path.abspath(target_directory)
     ge_dir = _get_full_path_to_ge_dir(target_directory)
@@ -53,21 +55,27 @@ def init(target_directory, usage_stats):
             exit(5)
 
     if click.confirm("Generate Datasources based on Kedro Context?", default=True):
-        kedro_context = load_context(Path.cwd())
-        ge_context = toolkit.load_data_context_with_error_handling(ge_dir)
-        new_datasources = generate_datasources(kedro_context, ge_context)
-        if new_datasources:
-            cli_message(
-                "Added {} New datasources to your project.".format(len(new_datasources))
-            )
+        project_path = Path.cwd()
+        bootstrap_project(project_path)
+        with KedroSession.create(project_path=project_path) as session:
+            kedro_context = session.load_context()
+            ge_context = toolkit.load_data_context_with_error_handling(ge_dir)
+            new_datasources = generate_datasources(kedro_context, ge_context)
+            if new_datasources:
+                cli_message(
+                    "Added {} New datasources to your project.".format(len(new_datasources))
+                )
 
     if click.confirm(
         "Generate Basic Validation Suites based on Kedro Context?", default=True
     ):
-        kedro_context = load_context(Path.cwd())
-        ge_context = toolkit.load_data_context_with_error_handling(ge_dir)
-        new_datasources = generate_basic_suites(kedro_context, ge_context)
-        if new_datasources:
-            cli_message(
-                "Added {} New datasources to your project.".format(len(new_datasources))
-            )
+        project_path = Path.cwd()
+        bootstrap_project(project_path)
+        with KedroSession.create(project_path=project_path) as session:
+            kedro_context = session.load_context()
+            ge_context = toolkit.load_data_context_with_error_handling(ge_dir)
+            new_datasources = generate_basic_suites(kedro_context, ge_context)
+            if new_datasources:
+                cli_message(
+                    "Added {} New datasources to your project.".format(len(new_datasources))
+                )
