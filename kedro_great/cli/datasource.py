@@ -112,15 +112,18 @@ def datasource_new(directory):
     Will create one Datasource each dataset in the catalog.
     Only supports Spark and Pandas type datasets.
     """
-    from kedro.framework.context import load_context
+    from kedro.framework.session import KedroSession
+    from kedro.framework.startup import bootstrap_project
+    project_path = Path.cwd()
+    bootstrap_project(project_path)
+    with KedroSession.create(project_path=project_path) as session:
+        kedro_context = session.load_context()
+        ge_context = toolkit.load_data_context_with_error_handling(directory)
+        new_datasources = generate_datasources(kedro_context, ge_context)
 
-    ge_context = toolkit.load_data_context_with_error_handling(directory)
-    kedro_context = load_context(Path.cwd())
-    new_datasources = generate_datasources(kedro_context, ge_context)
-
-    if new_datasources:
-        cli_message(
-            "Added {} New datasources to your project.".format(len(new_datasources))
-        )
-    else:  # no datasource was created
-        sys.exit(1)
+        if new_datasources:
+            cli_message(
+                "Added {} New datasources to your project.".format(len(new_datasources))
+            )
+        else:  # no datasource was created
+            sys.exit(1)

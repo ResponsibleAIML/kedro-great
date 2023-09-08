@@ -33,6 +33,8 @@ Furthermore, by using `kedro great init`, you also generate Great Expectations `
 By default, expectation suites are named for the `catalog.yml` name and a `basic.json` is generated for each.
 
 ```console
+cd example-pipeline
+great_expectations init
 kedro great init
 ```
 

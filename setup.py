@@ -17,17 +17,20 @@ setup(
     include_package_data=True,
     license="MIT",
     install_requires=[
-        "kedro>=0.16.0",
-        "kedro[pandas]>=0.16.0",
-        "kedro[spark]>=0.16.0",
-        "great_expectations",
+        "kedro>=0.18.0",
+        "kedro[spark]",
+        "great_expectations>=0.13",
         "pyspark",
         "pandas",
+        "tables==3.8.0"
     ],
     classifiers=[
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
     ],
     entry_points={
         "kedro.global_commands": ["kedro-great = kedro_great:commands"]

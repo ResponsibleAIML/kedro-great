@@ -117,17 +117,18 @@
       }
     }
   ],
+  "ge_cloud_id": null,
   "meta": {
     "BasicSuiteBuilderProfiler": {
       "batch_kwargs": {
         "data_asset_name": "iris",
         "datasource": "spark_iris_data___kedro_great_datasource",
-        "path": "/Users/tamu/code/kedro-great/example-pipeline/data/01_raw/iris.csv",
+        "path": "/home/ensangalufu/code/ResponsibleAIML/kedro-great/example-pipeline/data/01_raw/iris.csv",
         "reader_options": {
           "header": true
         }
       },
-      "created_at": 1592139845.478792,
+      "created_at": 1688959218.5824666,
       "created_by": "BasicSuiteBuilderProfiler"
     },
     "citations": [
@@ -135,16 +136,15 @@
         "batch_kwargs": {
           "data_asset_name": "iris",
           "datasource": "spark_iris_data___kedro_great_datasource",
-          "path": "/Users/tamu/code/kedro-great/example-pipeline/data/01_raw/iris.csv",
+          "path": "/home/ensangalufu/code/ResponsibleAIML/kedro-great/example-pipeline/data/01_raw/iris.csv",
           "reader_options": {
             "header": true
           }
         },
         "batch_markers": {
-          "ge_load_time": "20200614T130354.372736Z"
+          "ge_load_time": "20230710T032012.213673Z"
         },
-        "batch_parameters": null,
-        "citation_date": "20200614T130405.705432Z",
+        "citation_date": "2023-07-10T03:20:18.886715Z",
         "comment": "BasicSuiteBuilderProfiler added a citation based on the current batch."
       }
     ],
@@ -165,10 +165,10 @@
         "description": ""
       }
     },
-    "great_expectations.__version__": "0.11.4",
+    "great_expectations_version": "0.17.3",
     "notes": {
       "content": [
-        "#### This is an _example_ suite\n\n- This suite was made by quickly glancing at 1000 rows of your data.\n- This is **not a production suite**. It is meant to show examples of expectations.\n- Because this suite was auto-generated using a very basic profiler that does not know your data like you do, many of the expectations may not be meaningful.\n"
+        "#### This is an _example_ suite\n\n- This suite was made by quickly glancing at 1000 rows of your data.\n- This Expectation Suite may not be a complete assessment of the quality of your data. You should review and edit the Expectations based on domain knowledge.\n- Because this suite was auto-generated using a very basic profiler that does not know your data like you do, many of the expectations may not be meaningful.\n"
       ],
       "format": "markdown"
     }
